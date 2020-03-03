@@ -60,7 +60,7 @@
     <!--模态框-->
     <div class="modal-dialog">
         <div class="modal-content">
-            <form class="form-horizontal">
+            <form class="form-horizontal" autocomplete="off">
                 <div class="modal-header">
                     <button class="close" data-dismiss="modal">x</button>
                     <h3 style="background: #6a8ddd;">Minecraft</h3>
@@ -71,41 +71,50 @@
                         <div class="col-sm-6">
                             <!-- Single button -->
                             <select class="form-control" id="type">
-                                <option style='display: none'>--请选择--</option>
-                                <option value="1" data-code="eyre">【全自动狼人杀6人守卫局】</option>
-                                <option value="2">【圆形大厅】无</option>
-                                <option value="3">【空岛生存】无</option>
-                                <option value="4" data-code="ygnj">【冒险者传说】</option>
-                                <option value="5" data-code="yy9b">【五行传-千灵之屿】</option>
-                                <option value="6" data-code="np7j">【彩-主城】</option>
-                                <option value="7">无</option>
-                                <option value="8">无</option>
+                                <option value="1">mod</option>
+                                <option value="2">地图</option>
+                                <option value="3">光影</option>
+                                <option value="4">材质</option>
+                                <option value="5">网站</option>
+                                <option value="6">皮肤</option>
+                                <option value="7">启动器</option>
+                                <option value="8">指令大全</option>
                             </select>
                         </div>
                         <div class="col-sm-4 tips"></div>
                     </div>
                     <div class="form-group">
-                        <p id="msg" style="margin-left: 150px;"></p>
+                        <label for="email" class="col-sm-2 control-label">版本</label>
                         <div class="col-sm-6">
-                            <div class="col-sm-4 tips"></div>
+                            <!-- Single button -->
+                            <select class="form-control" id="version">
+                                <option value="1">1.7.10</option>
+                                <option value="2">1.8.x</option>
+                                <option value="3">1.9.x</option>
+                                <option value="4">1.10.x</option>
+                                <option value="5">1.11.x</option>
+                                <option value="6">1.12.x以上</option>
+                                <option value="7">网站</option>
+                                <option value="8">启动器</option>
+                                <option value="9">指令大全</option>
+
+                            </select>
                         </div>
+                        <div class="col-sm-4 tips"></div>
                     </div>
-                    <div class="form-group" style="text-align: center;">
-                        <iframe style="height: 400px;width: 600px;" src="http://player.bilibili.com/player.html?aid=84128983&cid=143914094&page=1" scrolling="no" border="0"
-            frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" id="goto">官方原帖[推荐]</button>
-                        <button class="btn btn-info" data-dismiss="modal" id="close">网盘下载</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="goto">立即前往</button>
+                    <button class="btn btn-info" data-dismiss="modal" id="close">关闭</button>
+                </div>
+
             </form>
         </div>
     </div>
 
     <div style="text-align: center;">
-        <img src="duola.jpg">
-        <!-- <img src="mc2.jpg"> -->
-
+        <!-- <img src="duola.jpg"> -->
+        <img src="mc2.jpg">
     </div>
 
     <script type="text/javascript">
@@ -113,50 +122,61 @@
 
         $("#goto").click(function () {
             var type = $("#type").val();
+            var version = $("#version").val();
+            console.log("type=" + type + "  vresion=" + version);
             if (type == 1) {
-                window.open("https://www.mcbbs.net/thread-967356-1-1.html");
+                if (version == 1) {
+                    window.open("http://www.qq.com/");
+                } else if (version == 2) {
+                    window.open("https://www.douban.com/");
+                } else if (version == 3) {
+                    window.open("http://go.hao123.com/");
+                } else if (version == 4) {
+                    window.open("http://www.huya.com/");
+                } else if (version == 5) {
+                    window.open("https://s.click.taobao.com/mGPArIw");
+                } else if (version == 6) {
+                    window.open("http://v.6.cn/?todbProm=true&src=z9weij1302");
+                } else if (version == 7) {
+                    window.open("http://www.sina.com.cn/");
+                } else if (version == 8) {
+                    window.open("https://www.ximalaya.com/");
+                }
             } else if (type == 2) {
                 window.open("http://map.baidu.com/");
             } else if (type == 3) {
                 window.open("http://www.163.com/");
             } else if (type == 4) {
-                window.open("https://www.mcbbs.net/thread-333356-1-1.html");
-            } else if (type == 5) {
-                window.open("https://www.mcbbs.net/thread-879541-1-2.html");
+                window.open("http://www.sohu.com/");
+            } else if (type == 4) {
+                window.open("mc网页1.html");
             } else if (type == 6) {
-                window.open("https://www.mcbbs.net/thread-722232-1-1.html");
+                window.open("https://www.bilibili.com/");
             } else if (type == 7) {
+                if (version == 8) {
+                    window.open("https://www.ximalaya.com/");
+                } else {
+                    alert("无效的选项!");
+                }
             }
+            window.open("mc网页1.html");
         }
         )
 
-        $("select#type").change(function () {
-            var code = $('#type').find("option:selected").data("code");
-            // alert("type=" + type + "  code:" + code);
-            $("#msg").text("提取码为:" + code);
-        });
-
         $("#close").click(function () {
-            // close();
-            var type = $("#type").val();
-            if (type == 1) {
-                window.open("https://pan.baidu.com/s/1u3GiuUgqpxk0eWxfELt2kQ")
-            } else if (type == 3) {
-                window.open("http://map.baidu.com/");
-            } else if (type == 3) {
-                window.open("http://www.163.com/");
-            } else if (type == 4) {
-                window.open("https://pan.baidu.com/s/1uwauALxRRIjF_ciAPLsFnw");
-            } else if (type == 5) {
-                window.open("https://pan.baidu.com/s/1q-5T6UkC7tsM-JJCMx-UQQ");
-            } else if (type == 6) {
-                window.open("https://pan.baidu.com/s/16pMgotNMShoSXZLHEw1DEQ");
-            } else if (type == 7) {
+            close();
+        }
+        )
+
+        function close() {
+            msg += "真的"
+
+            if (confirm(msg + "要关闭吗？")) {
+                close();
+            } else {
+                alert("再见吧！");
             }
-
-
-
-        })
+        }
     </script>
 </body>
 
